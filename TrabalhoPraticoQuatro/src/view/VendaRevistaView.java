@@ -5,18 +5,18 @@ import classes.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class VendaLivro extends javax.swing.JFrame {
+public class VendaRevistaView extends javax.swing.JFrame {
     
     ArrayList<Cliente> clientes;
-    ArrayList<Livro> livros;
+    ArrayList<Revista> revistas;
     DefaultTableModel dtmUsuarios;
-    DefaultTableModel dtmLivros;
+    DefaultTableModel dtmRevistas;
     
-    public VendaLivro(ArrayList<Cliente> cliente,ArrayList<Livro> livro) 
+    public VendaRevistaView(ArrayList<Cliente> cliente,ArrayList<Revista> revista) 
     {
         initComponents();
         this.clientes = cliente;
-        this.livros = livro;
+        this.revistas = revista;
         
         this.dtmUsuarios = (DefaultTableModel)tabelaUsuarios.getModel();  
         for(int a = 0; a < clientes.size();a++) 
@@ -24,11 +24,11 @@ public class VendaLivro extends javax.swing.JFrame {
             Object dados [] = {this.clientes.get(a).getNome(),this.clientes.get(a).getLivrosComprados(),this.clientes.get(a).getRevistaComprados()};
             this.dtmUsuarios.addRow(dados);
         }
-        this.dtmLivros = (DefaultTableModel)tabelaLivros.getModel();  
-        for(int a = 0; a < livros.size();a++) 
+        this.dtmRevistas = (DefaultTableModel)tabelaRevistas.getModel();  
+        for(int a = 0; a < revistas.size();a++) 
         {
-            Object dados [] = {this.livros.get(a).getTitulo(),this.livros.get(a).getPreco(),this.livros.get(a).getQuantidade()};
-            this.dtmLivros.addRow(dados);
+            Object dados [] = {this.revistas.get(a).getTitulo(),this.revistas.get(a).getPreco(),this.revistas.get(a).getQuantidade()};
+            this.dtmRevistas.addRow(dados);
         }
     }
 
@@ -40,7 +40,7 @@ public class VendaLivro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaLivros = new javax.swing.JTable();
+        tabelaRevistas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         quantidade = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
@@ -53,6 +53,8 @@ public class VendaLivro extends javax.swing.JFrame {
         txtDataPublicacao = new javax.swing.JLabel();
         txtEditora = new javax.swing.JLabel();
         txtAnoEdicao = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        nomeRevista = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Comprar um livro");
@@ -85,7 +87,7 @@ public class VendaLivro extends javax.swing.JFrame {
 
         jLabel2.setText("Selecione um livro :");
 
-        tabelaLivros.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaRevistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -93,12 +95,12 @@ public class VendaLivro extends javax.swing.JFrame {
                 "Titulo", "Valor", "Quantidade"
             }
         ));
-        tabelaLivros.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaRevistas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaLivrosMouseClicked(evt);
+                tabelaRevistasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaLivros);
+        jScrollPane1.setViewportView(tabelaRevistas);
 
         jLabel3.setText("Selecione a quantidade: ");
 
@@ -113,7 +115,7 @@ public class VendaLivro extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Mais informações"));
 
-        jLabel4.setText("Genero literario : ");
+        jLabel4.setText("Tipo de revista:");
 
         jLabel5.setText("Data de publicacao :");
 
@@ -129,6 +131,10 @@ public class VendaLivro extends javax.swing.JFrame {
 
         txtAnoEdicao.setText("N/A");
 
+        jLabel8.setText("Nome da revista: ");
+
+        nomeRevista.setText("N/A");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,20 +142,26 @@ public class VendaLivro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtGeneroLiterario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(txtDataPublicacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(txtAnoEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtGeneroLiterario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(txtDataPublicacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(txtAnoEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(nomeRevista)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,6 +179,10 @@ public class VendaLivro extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtDataPublicacao)
                     .addComponent(txtAnoEdicao))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(nomeRevista))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -178,7 +194,7 @@ public class VendaLivro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -207,7 +223,7 @@ public class VendaLivro extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,51 +248,52 @@ public class VendaLivro extends javax.swing.JFrame {
         {
             if(this.clientes.get(a).getNome().equals(nomeCompleto))
             {
-                this.clientes.get(a).setLivrosComprados(Integer.valueOf(quantidade.getValue().toString()));
+                this.clientes.get(a).setRevistasCompradas(Integer.valueOf(quantidade.getValue().toString()));
             }
         }
         
-        int indiceLivro = this.tabelaLivros.getSelectedRow();
-        String tituloLivro = this.tabelaLivros.getValueAt(indiceLivro, 0).toString();
+        int indiceLivro = this.tabelaRevistas.getSelectedRow();
+        String tituloLivro = this.tabelaRevistas.getValueAt(indiceLivro, 0).toString();
         
-        for(int a = 0; a < this.livros.size();a++) 
+        for(int a = 0; a < this.revistas.size();a++) 
         {
-            if(this.livros.get(a).getTitulo().equals(tituloLivro))
+            if(this.revistas.get(a).getTitulo().equals(tituloLivro))
             {
-                int estoque = this.livros.get(a).getQuantidade();
+                int estoque = this.revistas.get(a).getQuantidade();
                 int comprado = Integer.valueOf(quantidade.getValue().toString());
                 if((estoque - comprado)  < 0)
                 {
                     JOptionPane.showMessageDialog(null, "Insira uma quantidade adequada !!");
                 }else
                 {
-                     this.livros.get(a).setQuantidade(estoque - comprado);
-                     this.dtmLivros.setValueAt(this.livros.get(a).getQuantidade(),indiceLivro,2);
-                     this.dtmUsuarios.setValueAt(this.clientes.get(a).getLivrosComprados(),indiceUsuario,1);
+                     this.revistas.get(a).setQuantidade(estoque - comprado);
+                     this.dtmRevistas.setValueAt(this.revistas.get(a).getQuantidade(),indiceLivro,2);
+                     this.dtmUsuarios.setValueAt(this.clientes.get(a).getRevistaComprados(),indiceUsuario,2);
                      
-                     JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" livros :-D ");
+                     JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" revistas :-D ");
                      this.setVisible(false);
                 }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tabelaLivrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaLivrosMouseClicked
+    private void tabelaRevistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaRevistasMouseClicked
         // TODO add your handling code here:
-        int indiceLivro = this.tabelaLivros.getSelectedRow();
-        String tituloLivro = this.tabelaLivros.getValueAt(indiceLivro, 0).toString();
-        for(int a = 0; a < this.livros.size();a++) 
+        int indiceLivro = this.tabelaRevistas.getSelectedRow();
+        String tituloLivro = this.tabelaRevistas.getValueAt(indiceLivro, 0).toString();
+        for(int a = 0; a < this.revistas.size();a++) 
         {
-            if(this.livros.get(a).getTitulo().equals(tituloLivro))
+            if(this.revistas.get(a).getTitulo().equals(tituloLivro))
             {
-                Livro l = this.livros.get(a);
-                txtGeneroLiterario.setText(l.getGeneroLiterario());
+                Revista l = this.revistas.get(a);
+                nomeRevista.setText(l.getNome());
+                txtGeneroLiterario.setText(l.getTipoDeRevista());
                 txtDataPublicacao.setText(l.getDataDePublicacao());
                 txtEditora.setText(l.getEditora());
                 txtAnoEdicao.setText(String.valueOf(l.getEdicao()));
             }
         }
-    }//GEN-LAST:event_tabelaLivrosMouseClicked
+    }//GEN-LAST:event_tabelaRevistasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -295,8 +312,32 @@ public class VendaLivro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VendaLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaRevistaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
         //</editor-fold>
         
         //</editor-fold>
@@ -325,7 +366,7 @@ public class VendaLivro extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new VendaLivro(new ArrayList<Cliente>(),new ArrayList<Livro>()).setVisible(true);
+            new VendaRevistaView(new ArrayList<Cliente>(),new ArrayList<Revista>()).setVisible(true);
         });
     }
 
@@ -338,11 +379,13 @@ public class VendaLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nomeRevista;
     private javax.swing.JSpinner quantidade;
-    private javax.swing.JTable tabelaLivros;
+    private javax.swing.JTable tabelaRevistas;
     private javax.swing.JTable tabelaUsuarios;
     private javax.swing.JLabel txtAnoEdicao;
     private javax.swing.JLabel txtDataPublicacao;

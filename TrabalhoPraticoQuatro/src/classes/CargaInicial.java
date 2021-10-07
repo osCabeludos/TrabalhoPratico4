@@ -56,5 +56,4 @@ public class CargaInicial
             //nome,tipoDeRevista,titulo,dataDePublicacao,preco,editora,edicao,quantidade
             return revista;
         }
-        
 }
