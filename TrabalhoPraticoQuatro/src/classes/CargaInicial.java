@@ -7,7 +7,7 @@ public class CargaInicial
 {	
 	/**
 	 * @author Rodolfo
-	 * cadastra clientes que já estarão no código na hora de rodar o mesmo
+	 * Esta classe adiciona uma carga inicial de dados automaticamente , assim que o programa é executado
 	 */
 	public static ArrayList<Cliente> listaClientes()
 	{
@@ -50,7 +50,6 @@ public class CargaInicial
         {
             ArrayList<Livro> livros = new ArrayList<>();
             
-            // autor,generoLiterario,titulo,dataDePublicacao,preco,editora,edicao
             livros.add(new Livro("Augusto Cury", "Romance", "Amar e bom", "19/2/1998",544.33F, "Romances Love", 5,23));
             livros.add(new Livro("Flemming", "Academico", "Calculo II", "9/12/2008",64.93F, "Mir Moscovo", 1,54));
             livros.add(new Livro("Dennis Ritchie", "Academico", "Linguagem C", "1/1/1992",46.34F, "Flow Editor", 3,77));
@@ -68,8 +67,6 @@ public class CargaInicial
             revista.add(new Revista("Playboy","Desporto","Rodolfo, o Plaboy","12/3/2021",46.5f,"PlayBoy Ed",2,45));
             revista.add(new Revista("Magazine Luiza","Cosmetico","Os melhores cosmeticos","22/05/2021",66.35f,"Luiza Pub",21,95));
             revista.add(new Revista("Food Cook","Gastronomia","Os melhores temperos","4/09/2021",46.6f,"FoodMaker Ed",23,64));
-            
-            //nome,tipoDeRevista,titulo,dataDePublicacao,preco,editora,edicao,quantidade
             return revista;
         }
 }

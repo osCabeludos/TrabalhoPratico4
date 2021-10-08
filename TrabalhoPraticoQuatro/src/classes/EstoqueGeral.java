@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * @author Rodolfo
  * @author Marcos
- * Define os métodos e parâmetros de Cliente.
+ * Define os métodos e parâmetros da classe de Estoque Geral.
  */
 public class EstoqueGeral
 {
@@ -60,6 +60,11 @@ public class EstoqueGeral
 	public void setRevista(ArrayList<Revista> revista) {
 		this.listaRevistas = revista;
 	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Retorna o objeto da classe Cliente , tendo o nome passado como parâmetro, e nulo caso não seja encontrado
+	 */
 	public Cliente pesquisarCliente(String nomeCompleto) 
 	{
 		 for(int a = 0; a < this.listaClientes.size();a++) 
@@ -74,7 +79,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna o livro com o título passado como parâmetro
+	 * Retorna o objeto livro com o título passado como parâmetro,e nulo caso não seja encontrado
 	 */
 	public Livro pesquisarLivroPorTitulo(String nome)
 	{
@@ -91,7 +96,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna a revista com o título passado como parâmetro
+	 * Retorna a revista com o título passado como parâmetro,e nulo caso não seja encontrado
 	 */
 	public Revista pesquisarRevistaPorNome(String nome)
 	{

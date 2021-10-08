@@ -71,41 +71,10 @@ public class Cliente
 	}
 	/**
 	 * @author Rodolfo
-	 * adiciona o numero passado como parâmetro á quantidade de Livros comprados pelo cliente.
+	 * adiciona o numero passado como argumento a quantidade de revistas comprados pelo cliente.
 	 */
 	public void setRevistasCompradas(int quantidadeRevistasCompradas)
 	{
             this.revistasCompradas += quantidadeRevistasCompradas;
 	}
-	
-
-	/*
-	 * 	public void registrarCliente(Cliente cliente) 
-	{
-            List<Cliente> lista = this.getListaClientes();
-            lista.add(cliente);
-	}
-	
-	public Cliente pesquisarCliente(String nome) 
-	{
-            for(int a = 0; a < this.getListaClientes().size();a++) 
-            {
-                if(this.getListaClientes().get(a).getNome().equalsIgnoreCase(nome)) 
-                {
-                        return this.getListaClientes().get(a); 
-                }
-            }
-            return null;
-	}
-       public void addCliente(String nome, RG rg,Endereco endereco, Celular celular,int livrosComprados,int revistasCompradas)
-       {
-           Cliente c = new Cliente();
-           c.setCelular(celular);
-           c.setEndereco(endereco);
-           c.setNome(nome);
-           c.setRG(rg);
-           c.setLivrosComprados(livrosComprados);
-           c.setRevistasCompradas(revistasCompradas);
-           this.listaClientes.add(c);
-       } */
 }
