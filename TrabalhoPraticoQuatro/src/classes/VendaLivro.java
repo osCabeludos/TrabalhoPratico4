@@ -1,7 +1,11 @@
 package classes;
 
 public class VendaLivro implements Venda
-{
+{	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Cadastra uma venda, transferindo uma quantidade de livros do estoque para o cliente
+	 */
 	@Override
 	public void registrarVenda( String nome, int quantidade,Cliente cliente,EstoqueGeral estoque)
 	{

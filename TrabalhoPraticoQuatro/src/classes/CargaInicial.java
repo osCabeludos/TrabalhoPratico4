@@ -1,10 +1,17 @@
 package classes;
-
+/**Cria os dados iniciais do código
+ * @author Rodolfo
+ */
 import java.util.*;
 public class CargaInicial 
 {	
+	/**
+	 * @author Rodolfo
+	 * cadastra clientes que já estarão no código na hora de rodar o mesmo
+	 */
 	public static ArrayList<Cliente> listaClientes()
 	{
+		
 		ArrayList<Cliente> cliente = new ArrayList<>();
 		
 		cliente.add(new Cliente("Rodolfo Cabral Neves",
@@ -34,6 +41,11 @@ public class CargaInicial
                                 new Celular(61,773434324)));
 		return cliente;
 	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * cadastra livros que já estarão no código na hora de rodar o mesmo
+	 */
         public static ArrayList<Livro> listaLivros()
         {
             ArrayList<Livro> livros = new ArrayList<>();
@@ -45,6 +57,10 @@ public class CargaInicial
             livros.add(new Livro("Edson JÃºnior", "Academico", "Estrutuas de Dados II", "5/9/2009",63.71F, "UnB", 1,98));
             return livros;
         }
+    	/**
+    	 * @author Rodolfo
+    	 * cadastra revistas que já estarão no código na hora de rodar o mesmo
+    	 */
         public static ArrayList<Revista> listaRevista()
         {
             ArrayList<Revista> revista = new ArrayList<>();
