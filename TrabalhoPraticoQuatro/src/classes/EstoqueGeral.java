@@ -1,6 +1,10 @@
 package classes;
 import java.util.ArrayList;
-
+/**
+ * @author Rodolfo
+ * @author Marcos
+ * Define os métodos e parâmetros de Cliente.
+ */
 public class EstoqueGeral
 {
 	private int estoqueLivros, estoqueRevistas;
@@ -67,6 +71,11 @@ public class EstoqueGeral
 	        }
 		 return null;
 	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Retorna o livro com o título passado como parâmetro
+	 */
 	public Livro pesquisarLivroPorTitulo(String nome)
 	{
 		for(int a = 0; a < this.getEstoqueLivros();a++) 
@@ -79,6 +88,11 @@ public class EstoqueGeral
 		}
 		return null;
 	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Retorna a revista com o título passado como parâmetro
+	 */
 	public Revista pesquisarRevistaPorNome(String nome)
 	{
 		for(Revista revista : this.getListaRevistas()) 
