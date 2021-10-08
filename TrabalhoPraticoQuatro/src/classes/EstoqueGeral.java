@@ -6,15 +6,20 @@ public class EstoqueGeral
 	private int estoqueLivros, estoqueRevistas;
 	private ArrayList<Livro> listaLivros;
 	private ArrayList<Revista> listaRevistas;
+	private ArrayList<Cliente> listaClientes;
 	
-	public EstoqueGeral(ArrayList<Livro> livro, ArrayList<Revista> revista)
+	public EstoqueGeral(ArrayList<Livro> livro, ArrayList<Revista> revista,ArrayList<Cliente> listaClientes)
 	{
 		this.estoqueLivros = livro.size();
 		this.estoqueRevistas = revista.size();
 		this.listaLivros = livro;
+		this.listaClientes  = listaClientes;
 		this.listaRevistas = revista;
 	}
-
+	public ArrayList<Cliente> getListaClientes()
+	{
+		return this.listaClientes;
+	}
 	public int getEstoqueLivros()
 	{
 		return estoqueLivros;
@@ -40,12 +45,23 @@ public class EstoqueGeral
 		this.listaLivros = livro;
 	}
 
-	public ArrayList<Revista> getRevista() {
-		return listaRevistas;
+	public ArrayList<Revista> getListaRevistas() {
+		return this.listaRevistas;
 	}
 
 	public void setRevista(ArrayList<Revista> revista) {
 		this.listaRevistas = revista;
+	}
+	public Cliente pesquisarCliente(String nomeCompleto) 
+	{
+		 for(int a = 0; a < this.listaClientes.size();a++) 
+	        {
+	            if(this.listaClientes.get(a).getNome().equalsIgnoreCase(nomeCompleto))
+	            {
+	                return this.listaClientes.get(a);
+	            }
+	        }
+		 return null;
 	}
 	public Livro pesquisarLivroPorTitulo(String nome)
 	{
@@ -61,12 +77,11 @@ public class EstoqueGeral
 	}
 	public Revista pesquisarRevistaPorNome(String nome)
 	{
-		for(int a = 0; a < this.getEstoqueRevistas();a++) 
+		for(Revista revista : this.getListaRevistas()) 
 		{
-			Revista tmp = this.getRevista().get(a);
-			if(tmp.getNome().equalsIgnoreCase(nome))
+			if(revista.getNome().equalsIgnoreCase(nome))
 			{
-				return tmp;
+				return revista;
 			}
 		}
 		return null;

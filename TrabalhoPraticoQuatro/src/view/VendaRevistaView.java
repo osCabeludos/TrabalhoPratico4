@@ -7,27 +7,30 @@ import javax.swing.JOptionPane;
 
 public class VendaRevistaView extends javax.swing.JFrame {
     
-    ArrayList<Cliente> clientes;
-    ArrayList<Revista> revistas;
+	EstoqueGeral estoqueGeral;
     DefaultTableModel dtmUsuarios;
     DefaultTableModel dtmRevistas;
     
-    public VendaRevistaView(ArrayList<Cliente> cliente,ArrayList<Revista> revista) 
+    public VendaRevistaView(EstoqueGeral estoqueGeral) 
     {
         initComponents();
-        this.clientes = cliente;
-        this.revistas = revista;
         
-        this.dtmUsuarios = (DefaultTableModel)tabelaUsuarios.getModel();  
-        for(int a = 0; a < clientes.size();a++) 
+        this.estoqueGeral = estoqueGeral;
+        this.dtmUsuarios = (DefaultTableModel)tabelaUsuarios.getModel(); 
+        
+        ArrayList<Cliente> listaClientes = this.estoqueGeral.getListaClientes();
+        
+        for(int a = 0; a < listaClientes.size();a++) 
         {
-            Object dados [] = {this.clientes.get(a).getNome(),this.clientes.get(a).getLivrosComprados(),this.clientes.get(a).getRevistaComprados()};
+            Object dados [] = {listaClientes.get(a).getNome(),listaClientes.get(a).getLivrosComprados(),listaClientes.get(a).getRevistaComprados()};
             this.dtmUsuarios.addRow(dados);
         }
-        this.dtmRevistas = (DefaultTableModel)tabelaRevistas.getModel();  
-        for(int a = 0; a < revistas.size();a++) 
+        this.dtmRevistas = (DefaultTableModel)tabelaRevistas.getModel();
+        ArrayList<Revista> listaRevistas = this.estoqueGeral.getListaRevistas();
+        
+        for(int a = 0; a < listaRevistas.size();a++) 
         {
-            Object dados [] = {this.revistas.get(a).getTitulo(),this.revistas.get(a).getPreco(),this.revistas.get(a).getQuantidade()};
+            Object dados [] = {listaRevistas.get(a).getNome(),listaRevistas.get(a).getPreco(),listaRevistas.get(a).getQuantidade()};
             this.dtmRevistas.addRow(dados);
         }
     }
@@ -239,71 +242,52 @@ public class VendaRevistaView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tabelaUsuariosMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+       
         int indiceUsuario = this.tabelaUsuarios.getSelectedRow();
         String nomeCompleto = this.tabelaUsuarios.getValueAt(indiceUsuario, 0).toString();
+        Cliente cliente = this.estoqueGeral.pesquisarCliente(nomeCompleto);
         
-        for(int a = 0; a < this.clientes.size();a++) 
+        int indiceRevista= this.tabelaRevistas.getSelectedRow();
+        String nomeRevista = this.tabelaRevistas.getValueAt(indiceRevista, 0).toString();
+        VendaRevista vendaRevista = new VendaRevista();
+        Revista revista = this.estoqueGeral.pesquisarRevistaPorNome(nomeRevista);
+        
+        int estoque = revista.getQuantidade();
+        int comprado = Integer.valueOf(quantidade.getValue().toString());
+        
+        if((estoque - comprado)  < 0)
         {
-            if(this.clientes.get(a).getNome().equals(nomeCompleto))
-            {
-                this.clientes.get(a).setRevistasCompradas(Integer.valueOf(quantidade.getValue().toString()));
-            }
-        }
-        
-        int indiceLivro = this.tabelaRevistas.getSelectedRow();
-        String tituloLivro = this.tabelaRevistas.getValueAt(indiceLivro, 0).toString();
-        
-        for(int a = 0; a < this.revistas.size();a++) 
+            JOptionPane.showMessageDialog(null, "Insira uma quantidade adequada !!");
+        }else
         {
-            if(this.revistas.get(a).getTitulo().equals(tituloLivro))
-            {
-                int estoque = this.revistas.get(a).getQuantidade();
-                int comprado = Integer.valueOf(quantidade.getValue().toString());
-                if((estoque - comprado)  < 0)
-                {
-                    JOptionPane.showMessageDialog(null, "Insira uma quantidade adequada !!");
-                }else
-                {
-                     this.revistas.get(a).setQuantidade(estoque - comprado);
-                     this.dtmRevistas.setValueAt(this.revistas.get(a).getQuantidade(),indiceLivro,2);
-                     this.dtmUsuarios.setValueAt(this.clientes.get(a).getRevistaComprados(),indiceUsuario,2);
-                     
-                     JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" revistas :-D ");
-                     this.setVisible(false);
-                }
-            }
+        	 vendaRevista.registrarVenda(nomeRevista, comprado, cliente, this.estoqueGeral);
+             this.dtmRevistas.setValueAt(revista.getQuantidade(),indiceRevista,2);
+             this.dtmUsuarios.setValueAt(cliente.getRevistaComprados(),indiceUsuario,2);
+             
+             JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" revistas :-D ");
+             this.setVisible(false);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+      
+    }
 
     private void tabelaRevistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaRevistasMouseClicked
-        // TODO add your handling code here:
-        int indiceLivro = this.tabelaRevistas.getSelectedRow();
-        String tituloLivro = this.tabelaRevistas.getValueAt(indiceLivro, 0).toString();
-        for(int a = 0; a < this.revistas.size();a++) 
-        {
-            if(this.revistas.get(a).getTitulo().equals(tituloLivro))
-            {
-                Revista l = this.revistas.get(a);
-                nomeRevista.setText(l.getNome());
-                txtGeneroLiterario.setText(l.getTipoDeRevista());
-                txtDataPublicacao.setText(l.getDataDePublicacao());
-                txtEditora.setText(l.getEditora());
-                txtAnoEdicao.setText(String.valueOf(l.getEdicao()));
-            }
-        }
-    }//GEN-LAST:event_tabelaRevistasMouseClicked
+       
+        int indiceRevista = this.tabelaRevistas.getSelectedRow();
+        String nome = this.tabelaRevistas.getValueAt(indiceRevista, 0).toString();
+        Revista revista = estoqueGeral.pesquisarRevistaPorNome(nome);
+        nomeRevista.setText(revista.getNome());
+        txtGeneroLiterario.setText(revista.getTipoDeRevista());
+        txtDataPublicacao.setText(revista.getDataDePublicacao());
+        txtEditora.setText(revista.getEditora());
+        txtAnoEdicao.setText(String.valueOf(revista.getEdicao()));
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -366,7 +350,7 @@ public class VendaRevistaView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new VendaRevistaView(new ArrayList<Cliente>(),new ArrayList<Revista>()).setVisible(true);
+            new VendaRevistaView(new EstoqueGeral(new ArrayList<Livro>(),new ArrayList<Revista>(),new ArrayList<Cliente> ())).setVisible(true);
         });
     }
 

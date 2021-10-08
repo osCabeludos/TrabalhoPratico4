@@ -31,16 +31,12 @@ public class Revista extends Produto {
         }
         public void setQuantidade(int q)
         {
-            this.quantidade = q;
+            this.quantidade -= q;
         }
 	public String getAtributoComparacao() {
 		return getNome();
 	}
 	
-	public String toString() {
-		return nome + " " + super.titulo +  " REVISTA da data: " + super.dataDePublicacao;
-	}
-
 	public String getNome() {
 		return nome;
 	}

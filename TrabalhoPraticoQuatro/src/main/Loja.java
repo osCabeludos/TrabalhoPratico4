@@ -9,12 +9,15 @@ public class Loja extends javax.swing.JFrame {
     
     
     public ArrayList<Cliente> clientes;
+    public EstoqueGeral estoqueGeral;
     public ArrayList<Revista> revistas;
     public ArrayList<Livro> livros;
     
     public Loja()
     {
         initComponents();
+        this.estoqueGeral = new EstoqueGeral(CargaInicial.listaLivros(),CargaInicial.listaRevista(),CargaInicial.listaClientes()); 
+        //this.estoqueGeral = new EstoqueGeral(new ArrayList<Livro>(),new ArrayList<Revista>(),new ArrayList<Cliente>());
         this.clientes = CargaInicial.listaClientes();
         this.livros = CargaInicial.listaLivros();
         this.revistas = CargaInicial.listaRevista();
@@ -224,7 +227,7 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        new VendaRevistaView(this.clientes, this.revistas).setVisible(true);
+        new VendaRevistaView(this.estoqueGeral).setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
