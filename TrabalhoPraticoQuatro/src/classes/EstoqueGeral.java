@@ -16,6 +16,10 @@ public class EstoqueGeral
 		this.listaClientes  = listaClientes;
 		this.listaRevistas = revista;
 	}
+	public ArrayList<Livro> getListaLivros()
+	{
+		return this.listaLivros;
+	}
 	public ArrayList<Cliente> getListaClientes()
 	{
 		return this.listaClientes;

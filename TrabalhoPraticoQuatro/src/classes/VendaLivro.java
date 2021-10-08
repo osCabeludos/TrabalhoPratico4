@@ -8,9 +8,8 @@ public class VendaLivro implements Venda
 		Livro livro = estoque.pesquisarLivroPorTitulo(nome);
 		if(livro != null) 
 		{
-			int remanescente = livro.getQuantidade() - quantidade;
-			livro.setQuantidade(remanescente);
-			cliente.setRevistasCompradas(quantidade);
+			livro.setQuantidade(quantidade);
+			cliente.setLivrosComprados(quantidade);
 		}
 	}
 }

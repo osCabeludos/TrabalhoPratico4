@@ -7,32 +7,33 @@ import javax.swing.JOptionPane;
 
 public class VendaLivroView extends javax.swing.JFrame {
     
-    ArrayList<Cliente> clientes;
-    ArrayList<Livro> livros;
+	EstoqueGeral estoqueGeral;
+    
     DefaultTableModel dtmUsuarios;
     DefaultTableModel dtmLivros;
     
-    public VendaLivroView(ArrayList<Cliente> cliente,ArrayList<Livro> livro) 
+    public VendaLivroView(EstoqueGeral estoqueGeral) 
     {
         initComponents();
-        this.clientes = cliente;
-        this.livros = livro;
-        
+        this.estoqueGeral = estoqueGeral;
         this.dtmUsuarios = (DefaultTableModel)tabelaUsuarios.getModel();  
-        for(int a = 0; a < clientes.size();a++) 
+        
+        ArrayList<Cliente> listaClientes = this.estoqueGeral.getListaClientes();
+        
+        for(int a = 0; a < listaClientes.size();a++) 
         {
-            Object dados [] = {this.clientes.get(a).getNome(),this.clientes.get(a).getLivrosComprados(),this.clientes.get(a).getRevistaComprados()};
+            Object dados [] = {listaClientes.get(a).getNome(),listaClientes.get(a).getLivrosComprados(),listaClientes.get(a).getRevistaComprados()};
             this.dtmUsuarios.addRow(dados);
         }
         this.dtmLivros = (DefaultTableModel)tabelaLivros.getModel();  
-        for(int a = 0; a < livros.size();a++) 
+        ArrayList<Livro> listaLivros = this.estoqueGeral.getListaLivros();
+        
+        for(int a = 0; a < listaLivros.size();a++) 
         {
-            Object dados [] = {this.livros.get(a).getTitulo(),this.livros.get(a).getPreco(),this.livros.get(a).getQuantidade()};
+            Object dados [] = {listaLivros.get(a).getTitulo(),listaLivros.get(a).getPreco(),listaLivros.get(a).getQuantidade()};
             this.dtmLivros.addRow(dados);
         }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -216,77 +217,53 @@ public class VendaLivroView extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void tabelaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaUsuariosMouseClicked
-        // TODO add your handling code here:
         
-    }//GEN-LAST:event_tabelaUsuariosMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int indiceUsuario = this.tabelaUsuarios.getSelectedRow();
+        
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    	int indiceUsuario = this.tabelaUsuarios.getSelectedRow();
         String nomeCompleto = this.tabelaUsuarios.getValueAt(indiceUsuario, 0).toString();
+        Cliente cliente = this.estoqueGeral.pesquisarCliente(nomeCompleto);
         
-        for(int a = 0; a < this.clientes.size();a++) 
+        int indiceLivro= this.tabelaLivros.getSelectedRow();
+        String tituloLivro = this.tabelaLivros.getValueAt(indiceLivro, 0).toString();
+        VendaLivro vendaLivro = new VendaLivro ();
+        Livro livro = this.estoqueGeral.pesquisarLivroPorTitulo(tituloLivro);
+        
+        int estoque = livro.getQuantidade();
+        int comprado = Integer.valueOf(quantidade.getValue().toString());
+        
+        if((estoque - comprado)  < 0)
         {
-            if(this.clientes.get(a).getNome().equals(nomeCompleto))
-            {
-                this.clientes.get(a).setLivrosComprados(Integer.valueOf(quantidade.getValue().toString()));
-            }
+            JOptionPane.showMessageDialog(null, "Insira uma quantidade adequada !!");
+        }else
+        {
+        	 vendaLivro.registrarVenda(tituloLivro, comprado, cliente, this.estoqueGeral);
+             this.dtmLivros.setValueAt(livro.getQuantidade(),indiceLivro,2);
+             this.dtmUsuarios.setValueAt(cliente.getLivrosComprados(),indiceUsuario,1);
+             
+             JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" revistas :-D ");
+             this.setVisible(false);
         }
-        
+    }
+
+    private void tabelaLivrosMouseClicked(java.awt.event.MouseEvent evt) {
+       
         int indiceLivro = this.tabelaLivros.getSelectedRow();
         String tituloLivro = this.tabelaLivros.getValueAt(indiceLivro, 0).toString();
         
-        for(int a = 0; a < this.livros.size();a++) 
-        {
-            if(this.livros.get(a).getTitulo().equals(tituloLivro))
-            {
-                int estoque = this.livros.get(a).getQuantidade();
-                int comprado = Integer.valueOf(quantidade.getValue().toString());
-                if((estoque - comprado)  < 0)
-                {
-                    JOptionPane.showMessageDialog(null, "Insira uma quantidade adequada !!");
-                }else
-                {
-                     this.livros.get(a).setQuantidade(estoque - comprado);
-                     this.dtmLivros.setValueAt(this.livros.get(a).getQuantidade(),indiceLivro,2);
-                     this.dtmUsuarios.setValueAt(this.clientes.get(a).getLivrosComprados(),indiceUsuario,1);
-                     
-                     JOptionPane.showMessageDialog(null, nomeCompleto+ " comprou "+ comprado +" livros :-D ");
-                     this.setVisible(false);
-                }
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Livro livro = estoqueGeral.pesquisarLivroPorTitulo(tituloLivro);
+        txtGeneroLiterario.setText(livro.getGeneroLiterario());
+        txtDataPublicacao.setText(livro.getDataDePublicacao());
+        txtEditora.setText(livro.getEditora());
+        txtAnoEdicao.setText(String.valueOf(livro.getEdicao()));
+    }
 
-    private void tabelaLivrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaLivrosMouseClicked
-        // TODO add your handling code here:
-        int indiceLivro = this.tabelaLivros.getSelectedRow();
-        String tituloLivro = this.tabelaLivros.getValueAt(indiceLivro, 0).toString();
-        for(int a = 0; a < this.livros.size();a++) 
-        {
-            if(this.livros.get(a).getTitulo().equals(tituloLivro))
-            {
-                Livro l = this.livros.get(a);
-                txtGeneroLiterario.setText(l.getGeneroLiterario());
-                txtDataPublicacao.setText(l.getDataDePublicacao());
-                txtEditora.setText(l.getEditora());
-                txtAnoEdicao.setText(String.valueOf(l.getEdicao()));
-            }
-        }
-    }//GEN-LAST:event_tabelaLivrosMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -297,39 +274,12 @@ public class VendaLivroView extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VendaLivroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-    
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(() -> {
-            new VendaLivroView(new ArrayList<Cliente>(),new ArrayList<Livro>()).setVisible(true);
+            new VendaLivroView(new EstoqueGeral(new ArrayList<Livro>(),new ArrayList<Revista>(),new ArrayList<Cliente> ())).setVisible(true);
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -348,5 +298,4 @@ public class VendaLivroView extends javax.swing.JFrame {
     private javax.swing.JLabel txtDataPublicacao;
     private javax.swing.JLabel txtEditora;
     private javax.swing.JLabel txtGeneroLiterario;
-    // End of variables declaration//GEN-END:variables
 }

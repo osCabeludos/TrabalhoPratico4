@@ -18,7 +18,7 @@ public class Livro extends Produto {
 	}
 	public void setQuantidade(int q)
         {
-            this.quantidade = q;
+            this.quantidade -= q;
         }
         public int getQuantidade()
         {

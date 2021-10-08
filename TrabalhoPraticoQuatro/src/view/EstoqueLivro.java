@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 public class EstoqueLivro extends javax.swing.JFrame {
     
-    ArrayList<Cliente> clientes;
     ArrayList<Livro> livros;
     DefaultTableModel dtmUsuarios;
     DefaultTableModel dtmLivros;
