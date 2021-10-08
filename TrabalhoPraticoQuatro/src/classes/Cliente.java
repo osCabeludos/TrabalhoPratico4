@@ -1,5 +1,9 @@
 package classes;
-
+/**
+ * @author Rodolfo
+ * @author Marcos
+ * Define os métodos e parâmetros de Cliente.
+ */
 public class Cliente 
 {
 	private String nome;
@@ -49,6 +53,10 @@ public class Cliente
 	{
             return this.rg;
 	}
+	/**
+	 * @author Rodolfo
+	 * adiciona o numero passado como parâmetro á quantidade de revistas comprados pelo cliente.
+	 */
 	public void setLivrosComprados(int quantidadeLivrosComprados) // Adiciona um livro comprado Ã¢ coleÃ§ao
 	{
             this.livrosComprados += quantidadeLivrosComprados;
@@ -61,6 +69,10 @@ public class Cliente
 	{
             return this.revistasCompradas;
 	}
+	/**
+	 * @author Rodolfo
+	 * adiciona o numero passado como parâmetro á quantidade de Livros comprados pelo cliente.
+	 */
 	public void setRevistasCompradas(int quantidadeRevistasCompradas)
 	{
             this.revistasCompradas += quantidadeRevistasCompradas;

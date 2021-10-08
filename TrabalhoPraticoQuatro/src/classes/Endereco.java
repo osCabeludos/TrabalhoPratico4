@@ -67,7 +67,11 @@ public class Endereco
 	public void setQuadra(int quadra) {
 		this.quadra = quadra;
 	}
-	
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Edita o endereço de acordo com os parâmetros passados.
+	 */
 	public void editarEndereco(String cep, String complemento, String distrito, String cidade, String estado, String lote,
 			int numeroCasa, int quadra) {
 		

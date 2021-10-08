@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package classes;
-
+/**
+ * @author Rodolfo
+ * @author Marcos
+ * Define os métodos e parâmetros para o RG dos Clientes.
+ */
 public class RG
 {
 	private String sexo,dataNascimento,dataValidade,ID;
@@ -49,6 +53,11 @@ public class RG
 	{
 		return this.ID;
 	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * edita um RG de acordo com os parâmetros passados
+	 */
 	public void editarRG( String nome,String sexo,String dataNascimento,String dataValidade,String ID)
 	{
 		this.setSexo(sexo);
