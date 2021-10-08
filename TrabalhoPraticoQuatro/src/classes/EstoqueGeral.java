@@ -96,6 +96,42 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
+	 * Método que funciona como filtro de pesquisa, retornando uma coleção de livros com o mesmo autor.
+	 */
+	public ArrayList<Livro> pesquisarLivroPorAutor(String autor)
+	{
+		ArrayList<Livro> resultados = new ArrayList();
+		for(int a = 0; a < this.getEstoqueLivros();a++) 
+		{
+			Livro tmp = this.getLivro().get(a);
+			if(tmp.getAutor().equalsIgnoreCase(autor))
+			{
+				resultados.add(tmp);
+			}
+		}
+		return resultados;
+	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
+	 * Método que funciona como filtro de pesquisa, retornando uma coleção de revista com a mesma editora.
+	 */
+	public ArrayList<Revista> pesquisarRevistaPorEditora(String editora)
+	{
+		ArrayList<Revista> resultados = new ArrayList();
+		for(int a = 0; a < this.getEstoqueLivros();a++) 
+		{
+			Revista revista = this.getListaRevistas().get(a);
+			if(revista.getEditora().equalsIgnoreCase(editora))
+			{
+				resultados.add(revista);
+			}
+		}
+		return resultados;
+	}
+	/**
+	 * @author Rodolfo
+	 * @author Marcos
 	 * Retorna a revista com o título passado como parâmetro,e nulo caso não seja encontrado
 	 */
 	public Revista pesquisarRevistaPorNome(String nome)
