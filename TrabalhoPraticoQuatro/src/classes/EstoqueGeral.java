@@ -145,4 +145,28 @@ public class EstoqueGeral
 		}
 		return null;
 	}
+	/**
+	 * @author Rodolfo
+	 * Método que cadastra um cliente novo
+	 */
+	public void cadastrarCliente(Cliente novoCliente) 
+	{
+		this.getListaClientes().add(novoCliente);
+	}
+	/**
+	 * @author Rodolfo
+	 * Método que cadastra um livro novo
+	 */
+	public void cadastrarLivro(Livro novoLivro) 
+	{
+		this.getListaLivros().add(novoLivro);
+	}
+	/**
+	 * @author Rodolfo
+	 * Método que cadastra uma revista nova
+	 */
+	public void cadastrarRevista(Revista novaRevista) 
+	{
+		this.getListaRevistas().add(novaRevista);
+	}
 }

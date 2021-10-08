@@ -10,17 +10,15 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Utilizador
+ * @author Rodolfo
  */
 public class CadastroRevista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CadastroUsuario
-     */
-    ArrayList<Revista> revistas;
-    public CadastroRevista(ArrayList<Revista> revista) {
+	 EstoqueGeral estoqueGeral;
+    public CadastroRevista(EstoqueGeral estoqueGeral) 
+    {
         initComponents();
-        this.revistas = revista;
+        this.estoqueGeral = estoqueGeral;
     }
 
     /**
@@ -215,7 +213,7 @@ public class CadastroRevista extends javax.swing.JFrame {
         
         //String autor, String generoLiterario, String titulo, String dataDePublicacao, 
 			
-      this.revistas.add(
+    	this.estoqueGeral.cadastrarRevista(
               new Revista(
                       txtNome.getText(),
                       txtTipoRevista.getText(),
@@ -279,7 +277,7 @@ public class CadastroRevista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroRevista(new ArrayList<Revista>()).setVisible(true);
+                new CadastroRevista(new EstoqueGeral(new ArrayList<Livro>(),new  ArrayList<Revista>(),new ArrayList<Cliente>())).setVisible(true);
             }
         });
     }

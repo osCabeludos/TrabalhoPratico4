@@ -197,7 +197,7 @@ public class Loja extends javax.swing.JFrame {
     }
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {
-        new CadastroCliente(this.clientes).setVisible(true);
+        new CadastroCliente(this.estoqueGeral).setVisible(true);
     }
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -212,7 +212,7 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        new CadastroLivro(this.estoqueGeral.getListaLivros()).setVisible(true);
+        new CadastroLivro(this.estoqueGeral).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -222,7 +222,7 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        new CadastroRevista(this.estoqueGeral.getListaRevistas()).setVisible(true);
+        new CadastroRevista(this.estoqueGeral).setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

@@ -17,10 +17,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     /**
      * Creates new form CadastroUsuario
      */
-    ArrayList<Cliente> clientes;
-    public CadastroCliente(ArrayList<Cliente> c) {
+    EstoqueGeral estoqueGeral;
+    public CadastroCliente(EstoqueGeral estoqueGeral) {
         initComponents();
-        this.clientes = c;
+        this.estoqueGeral = estoqueGeral;
     }
 
     /**
@@ -335,10 +335,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String cel = celular.getText();
-        clientes.add(new Cliente(nomeCompleto.getText(),
-                        new RG(sexo.getValue().toString(),dataNascimento.getText(),dataValidade.getText(),id.getText()),
-                        new Endereco (cep.getText(),"",distrito.getText(), cidade.getText(), estado.getSelectedItem().toString(), lote.getValue().toString(),Integer.valueOf(nCasa.getText()), Integer.valueOf(quadra.getValue().toString())),
-                        new Celular(Integer.valueOf(ddd.getValue().toString()),Integer.valueOf(celular.getText()))));
+        this.estoqueGeral.cadastrarCliente(new Cliente(nomeCompleto.getText(),
+                new RG(sexo.getValue().toString(),dataNascimento.getText(),dataValidade.getText(),id.getText()),
+                new Endereco (cep.getText(),"",distrito.getText(), cidade.getText(), estado.getSelectedItem().toString(), lote.getValue().toString(),Integer.valueOf(nCasa.getText()), Integer.valueOf(quadra.getValue().toString())),
+                new Celular(Integer.valueOf(ddd.getValue().toString()),Integer.valueOf(celular.getText()))));
         
         JOptionPane.showMessageDialog(null, "Utilizador cadastrado com sucesso");
         
@@ -393,7 +393,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroCliente(new ArrayList<Cliente>()).setVisible(true);
+                new CadastroCliente(new EstoqueGeral(new ArrayList<Livro>(),new  ArrayList<Revista>(),new ArrayList<Cliente>())).setVisible(true);
             }
         });
     }
