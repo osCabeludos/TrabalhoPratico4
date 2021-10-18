@@ -16,6 +16,7 @@ public class Cliente
 	public Cliente(String nome, RG rg,Endereco endereco, Celular celular)
 	{
 		this.nome = nome;
+		this.rg = rg;
 		this.endereco = endereco;
 		this.celular = celular;
 		this.livrosComprados = 0;

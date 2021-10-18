@@ -65,5 +65,9 @@ public class RG
 		this.setDataValidade(dataValidade);
 		this.setID(ID);
 	}
+	public void mostrarRG() 
+	{
+		System.out.println(this.getDataNascimento() + " " + this.getDataValidade() + " " + this.getID() + " " +this.getSexo() + " ");
+	}
 	
 }

@@ -21,23 +21,23 @@ public class CargaInicial
 		
                 cliente.add(new Cliente("Joao Pedro",
                                 new RG("M","18-12-1990","19-03-2024","112523"),
-                                new Endereco ("12225-977", "a Casa do " + "Estudante da Universidade de Bras�lia", "Distrito", "Bras�lia", "DF", "12",334, 20),
+                                new Endereco ("12225-977", "a Casa do " + "Estudante da Universidade de Brasilia", "Distrito", "Brasilia", "DF", "12",334, 20),
                                 new Celular(61,333434324)));
 		
                 cliente.add(new Cliente("Marcos Fernando",
                         new RG("M","18-12-1990","19-03-2024","119033"),
-                        new Endereco ("56345-678", "a Casa do " + "Estudante da Universidade de Bras�lia", "Distrito", "Bras�lia", "DF", "12",134, 27),
+                        new Endereco ("56345-678", "a Casa do " + "Estudante da Universidade de Brasilia", "Distrito", "Brasilia", "DF", "12",134, 27),
                         new Celular(61,883434324)));
 		
                 cliente.add(
                         new Cliente("Joao Manuel",
                                 new RG("M","18-12-1990","19-03-2024","112233"),
-                                new Endereco ("98345-678", "a Casa do " + "Estudante da Universidade de Bras�lia", "Distrito", "Bras�lia", "DF", "12",354, 12),
+                                new Endereco ("98345-678", "a Casa do " + "Estudante da Universidade de Brasilia", "Distrito", "Brasilia", "DF", "12",354, 12),
                                 new Celular(61,893434324)));
 		cliente.add(
                         new Cliente("Fabiana Mendes",
                                 new RG("F","28-02-1994","29-03-2026","662533"),
-                                new Endereco ("12555-678", "Casa do " + "Estudante da Universidade de Bras�lia", "Distrito", "Bras�lia", "DF", "21",884, 2),
+                                new Endereco ("12555-678", "Casa do " + "Estudante da Universidade de Brasilia", "Distrito", "Brasilia", "DF", "21",884, 2),
                                 new Celular(61,773434324)));
 		return cliente;
 	}
