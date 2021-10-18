@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * @author Rodolfo
  * @author Marcos
- * Define os métodos e parâmetros da classe de Estoque Geral.
+ * Define os mï¿½todos e parï¿½metros da classe de Estoque Geral.
  */
 public class EstoqueGeral
 {
@@ -63,7 +63,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna o objeto da classe Cliente , tendo o nome passado como parâmetro, e nulo caso não seja encontrado
+	 * Retorna o objeto da classe Cliente , tendo o nome passado como parï¿½metro, e nulo caso nï¿½o seja encontrado
 	 */
 	public Cliente pesquisarCliente(String nomeCompleto) 
 	{
@@ -76,10 +76,15 @@ public class EstoqueGeral
 	        }
 		 return null;
 	}
+        public void eliminarCliente(String nomeCompleto) 
+	{
+            Cliente cliente = this.pesquisarCliente(nomeCompleto);
+            this.getListaClientes().remove(cliente);
+	}
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna o objeto livro com o título passado como parâmetro,e nulo caso não seja encontrado
+	 * Retorna o objeto livro com o tï¿½tulo passado como parï¿½metro,e nulo caso nï¿½o seja encontrado
 	 */
 	public Livro pesquisarLivroPorTitulo(String nome)
 	{
@@ -96,7 +101,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Método que funciona como filtro de pesquisa, retornando uma coleção de livros com o mesmo autor.
+	 * Mï¿½todo que funciona como filtro de pesquisa, retornando uma coleï¿½ï¿½o de livros com o mesmo autor.
 	 */
 	public Livro pesquisarLivroPorAutor(String autor)
 	{
@@ -114,7 +119,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Método que funciona como filtro de pesquisa, retornando uma coleção de revista com a mesma editora.
+	 * Mï¿½todo que funciona como filtro de pesquisa, retornando uma coleï¿½ï¿½o de revista com a mesma editora.
 	 */
 	public Revista pesquisarRevistaPorEditora(String editora)
 	{
@@ -132,7 +137,7 @@ public class EstoqueGeral
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna a revista com o título passado como parâmetro,e nulo caso não seja encontrado
+	 * Retorna a revista com o tï¿½tulo passado como parï¿½metro,e nulo caso nï¿½o seja encontrado
 	 */
 	public Revista pesquisarRevistaPorNome(String nome)
 	{
@@ -147,7 +152,7 @@ public class EstoqueGeral
 	}
 	/**
 	 * @author Rodolfo
-	 * Método que cadastra um cliente novo
+	 * Mï¿½todo que cadastra um cliente novo
 	 */
 	public void cadastrarCliente(Cliente novoCliente) 
 	{
@@ -155,7 +160,7 @@ public class EstoqueGeral
 	}
 	/**
 	 * @author Rodolfo
-	 * Método que cadastra um livro novo
+	 * Mï¿½todo que cadastra um livro novo
 	 */
 	public void cadastrarLivro(Livro novoLivro) 
 	{
@@ -163,7 +168,7 @@ public class EstoqueGeral
 	}
 	/**
 	 * @author Rodolfo
-	 * Método que cadastra uma revista nova
+	 * Mï¿½todo que cadastra uma revista nova
 	 */
 	public void cadastrarRevista(Revista novaRevista) 
 	{

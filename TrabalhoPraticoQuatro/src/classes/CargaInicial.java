@@ -1,5 +1,5 @@
 package classes;
-/**Cria os dados iniciais do código
+/**Cria os dados iniciais do cï¿½digo
  * @author Rodolfo
  */
 import java.util.*;
@@ -7,7 +7,7 @@ public class CargaInicial
 {	
 	/**
 	 * @author Rodolfo
-	 * Esta classe adiciona uma carga inicial de dados automaticamente , assim que o programa é executado
+	 * Esta classe adiciona uma carga inicial de dados automaticamente , assim que o programa ï¿½ executado
 	 */
 	public static ArrayList<Cliente> listaClientes()
 	{
@@ -44,7 +44,7 @@ public class CargaInicial
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * cadastra livros que já estarão no código na hora de rodar o mesmo
+	 * cadastra livros que jï¿½ estarï¿½o no cï¿½digo na hora de rodar o mesmo
 	 */
         public static ArrayList<Livro> listaLivros()
         {
@@ -58,7 +58,7 @@ public class CargaInicial
         }
     	/**
     	 * @author Rodolfo
-    	 * cadastra revistas que já estarão no código na hora de rodar o mesmo
+    	 * cadastra revistas que jï¿½ estarï¿½o no cï¿½digo na hora de rodar o mesmo
     	 */
         public static ArrayList<Revista> listaRevista()
         {

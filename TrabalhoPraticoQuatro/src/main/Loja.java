@@ -202,7 +202,8 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
      
-        new VisualizarClientes(this.estoqueGeral.getListaClientes()).setVisible(true);
+        //new VisualizarClientes(this.estoqueGeral.getListaClientes()).setVisible(true);
+        new PesquisarCliente(this.estoqueGeral).setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

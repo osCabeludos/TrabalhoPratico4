@@ -7,8 +7,7 @@ import javax.swing.JOptionPane;
 
 public class VendaLivroView extends javax.swing.JFrame {
     
-	EstoqueGeral estoqueGeral;
-    
+    EstoqueGeral estoqueGeral;
     DefaultTableModel dtmUsuarios;
     DefaultTableModel dtmLivros;
     
