@@ -88,7 +88,7 @@ public class EditarCliente extends javax.swing.JFrame {
         txtNumero = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pesquisar Cliente");
+        setTitle("Editar Cliente");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do cliente"));
@@ -327,7 +327,7 @@ public class EditarCliente extends javax.swing.JFrame {
                 (int)Integer.valueOf(txtNumero.getText())
         );
         
-        cliente.editarCliente(txtNome.getText(), rg, endereco, celular);
+        cliente.atualizarCliente(txtNome.getText(), rg, endereco, celular);
         JOptionPane.showMessageDialog(this,"Alteracoes feitas com sucesso");
         this.setVisible(false);
         

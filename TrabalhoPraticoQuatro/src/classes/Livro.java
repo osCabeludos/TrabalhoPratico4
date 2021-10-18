@@ -53,7 +53,7 @@ public class Livro extends Produto {
         * @author Rodolfo
         * Edita as informacoes de um determinado livro
         */
-        public void editarLivro(String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
+        public void atualizarLivro(String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
         {
             this.setAutor(autor);
             this.setGeneroLiterario(generoLiterario);

@@ -59,7 +59,7 @@ public class EstoqueLivro extends javax.swing.JFrame {
         txtAutor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pesquisar Cliente");
+        setTitle("Pesquisar livro");
         setResizable(false);
 
         tabelaLivros.setModel(new javax.swing.table.DefaultTableModel(

@@ -14,28 +14,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Utilizador
  */
-public class EditarLivro extends javax.swing.JFrame {
+public class EditarRevista extends javax.swing.JFrame {
      EstoqueGeral  estoqueGeral;
-     String titulo;
+     String nome;
     /**
      * Creates new form PesquisarCliente
      */
-    public EditarLivro(EstoqueGeral  estoqueGeral,String titulo)
+    public EditarRevista(EstoqueGeral  estoqueGeral,String nomeRevista)
     {
         initComponents();
-        this.titulo = titulo;
+        this.nome = nomeRevista;
         this.estoqueGeral = estoqueGeral;
         
-        Livro livro = estoqueGeral.pesquisarLivroPorTitulo(titulo);
+        Revista revista = estoqueGeral.pesquisarRevistaPorNome(nomeRevista);
        
-        txtAutor.setText(livro.getAutor());
-        txtTitulo.setText(livro.getTitulo());
-        txtEdicao.setValue(livro.getEdicao());
-        txtQuantidade.setValue(livro.getQuantidade());
-        txtEditora.setText(livro.getEditora());
-        txtDataPublicacao.setText(livro.getDataDePublicacao());
-        txtGeneroLiterario.setText(livro.getGeneroLiterario());
-        txtPreco.setText(String.valueOf(livro.getPreco()));
+        txtAutor.setText(revista.getEditora());
+        txtNome.setText(revista.getTitulo());
+        txtEdicao.setValue(revista.getEdicao());
+        txtQuantidade.setValue(revista.getQuantidade());
+        txtEditora.setText(revista.getEditora());
+        txtDataPublicacao.setText(revista.getDataDePublicacao());
+        txtTipoRevista.setText(revista.getTipoDeRevista());
+        txtPreco.setText(String.valueOf(revista.getPreco()));
         
        }
 
@@ -56,11 +56,11 @@ public class EditarLivro extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         buttonEdit = new javax.swing.JToggleButton();
-        txtTitulo = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
         txtDataPublicacao = new javax.swing.JTextField();
         txtEditora = new javax.swing.JTextField();
-        txtGeneroLiterario = new javax.swing.JTextField();
+        txtTipoRevista = new javax.swing.JTextField();
         txtEdicao = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         txtPreco = new javax.swing.JTextField();
@@ -71,15 +71,15 @@ public class EditarLivro extends javax.swing.JFrame {
         setTitle("Editar livro");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do livro"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da revista"));
 
-        jLabel1.setText("Titulo:");
+        jLabel1.setText("Nome:");
 
         jLabel3.setText("Autor:");
 
         jLabel6.setText("Editora:");
 
-        jLabel8.setText("Genero Literario:");
+        jLabel8.setText("Tipo da revista:");
 
         jLabel13.setText("Data Publicacao :");
 
@@ -132,11 +132,11 @@ public class EditarLivro extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                                     .addComponent(txtAutor)
                                     .addComponent(txtDataPublicacao)
                                     .addComponent(txtEditora)
-                                    .addComponent(txtGeneroLiterario, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtTipoRevista, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(90, 90, 90)
@@ -150,7 +150,7 @@ public class EditarLivro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -162,7 +162,7 @@ public class EditarLivro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtGeneroLiterario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipoRevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -207,17 +207,16 @@ public class EditarLivro extends javax.swing.JFrame {
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
-    
-        Livro livro = estoqueGeral.pesquisarLivroPorTitulo(titulo);
-        livro.atualizarLivro(txtAutor.getText(),
-                txtGeneroLiterario.getText(), 
-                txtTitulo.getText(),
+        
+        //nome,tipoDeRevista,titulo,dataDePublicacao,preco,editora,edicao,quantidade
+        Revista revista = estoqueGeral.pesquisarRevistaPorNome(nome);
+        revista.atualizarRevista(txtNome.getText(),
+                txtTipoRevista.getText(), "",
                 txtDataPublicacao.getText(),
                 Float.valueOf(txtPreco.getText()),
                 txtEditora.getText(),
                 (int)txtEdicao.getValue(),
                 (int)txtQuantidade.getValue());
-   
         JOptionPane.showMessageDialog(this,"Alteracoes feitas com sucesso");
         this.setVisible(false);
         
@@ -240,14 +239,18 @@ public class EditarLivro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarRevista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarRevista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarRevista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarRevista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -256,7 +259,7 @@ public class EditarLivro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarLivro(new EstoqueGeral(new ArrayList<Livro>(),new ArrayList<Revista>(),new ArrayList<Cliente>()),new String()).setVisible(true);
+                new EditarRevista(new EstoqueGeral(new ArrayList<Livro>(),new ArrayList<Revista>(),new ArrayList<Cliente>()),new String()).setVisible(true);
             }
         });
     }
@@ -276,9 +279,9 @@ public class EditarLivro extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataPublicacao;
     private javax.swing.JSpinner txtEdicao;
     private javax.swing.JTextField txtEditora;
-    private javax.swing.JTextField txtGeneroLiterario;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JSpinner txtQuantidade;
-    private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtTipoRevista;
     // End of variables declaration//GEN-END:variables
 }

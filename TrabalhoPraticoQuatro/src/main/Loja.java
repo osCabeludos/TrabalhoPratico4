@@ -239,7 +239,7 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-        new EstoqueRevista(this.estoqueGeral.getListaRevistas()).setVisible(true);
+        new EstoqueRevista(this.estoqueGeral).setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**

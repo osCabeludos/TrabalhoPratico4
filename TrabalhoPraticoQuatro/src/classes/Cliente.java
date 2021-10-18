@@ -56,7 +56,7 @@ public class Cliente
 	}
 	/**
 	 * @author Rodolfo
-	 * adiciona o numero passado como parametro e quantidade de revistas comprados pelo cliente.
+	 * Adiciona o numero passado como parametro e quantidade de revistas comprados pelo cliente.
 	 */
 	public void setLivrosComprados(int quantidadeLivrosComprados) // Adiciona um livro comprado â coleçao
 	{
@@ -78,7 +78,7 @@ public class Cliente
 	{
             this.revistasCompradas += quantidadeRevistasCompradas;
 	}
-        public void editarCliente(String nome, RG rg,Endereco endereco, Celular celular)
+        public void atualizarCliente(String nome, RG rg,Endereco endereco, Celular celular)
         {
             this.setCelular(celular);
             this.setEndereco(endereco);

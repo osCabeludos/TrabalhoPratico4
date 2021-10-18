@@ -94,6 +94,15 @@ public class EstoqueGeral
             Livro livro = this.pesquisarLivroPorTitulo(titulo);
             this.getListaLivros().remove(livro);
 	}
+        /**
+	 * @author Rodolfo
+	 * Elimina uma revista da lista das revistas
+	 */
+        public void eliminarRevista(String nome) 
+	{
+            Revista revista = this.pesquisarRevistaPorNome(nome);
+            this.getListaRevistas().remove(revista);
+	}
 	/**
 	 * @author Rodolfo
 	 * @author Marcos

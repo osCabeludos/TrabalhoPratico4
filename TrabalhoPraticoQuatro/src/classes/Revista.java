@@ -52,6 +52,20 @@ public class Revista extends Produto {
 	public void setTipoDeRevista(String tipoDeRevista) {
 		this.tipoDeRevista = tipoDeRevista;
 	}
-
-
+        /**
+        *
+        * @author Rodolfo
+        * Edita as informacoes de uma determinada revista
+        */
+        public void atualizarRevista(String nome, String tipoDeRevista, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
+        {
+            this.setNome(nome);
+            this.setQuantidade(quantidade);
+            this.setTipoDeRevista(tipoDeRevista);
+            super.setTitulo(titulo);
+            super.setDataDePublicacao(dataDePublicacao);
+            super.setPreco(preco);
+            super.setEditora(editora);
+            super.setEdicao(edicao);
+        }
 }
