@@ -76,10 +76,23 @@ public class EstoqueGeral
 	        }
 		 return null;
 	}
+        /**
+	 * @author Rodolfo
+	 * Elimina um cliente da lista de clientes
+	 */
         public void eliminarCliente(String nomeCompleto) 
 	{
             Cliente cliente = this.pesquisarCliente(nomeCompleto);
             this.getListaClientes().remove(cliente);
+	}
+        /**
+	 * @author Rodolfo
+	 * Elimina um livro da lista de livros
+	 */
+        public void eliminarLivro(String titulo) 
+	{
+            Livro livro = this.pesquisarLivroPorTitulo(titulo);
+            this.getListaLivros().remove(livro);
 	}
 	/**
 	 * @author Rodolfo

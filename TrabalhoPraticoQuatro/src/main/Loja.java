@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Loja extends javax.swing.JFrame {
     
-    
     public ArrayList<Cliente> clientes;
     public EstoqueGeral estoqueGeral;
     public ArrayList<Revista> revistas;
@@ -25,7 +24,7 @@ public class Loja extends javax.swing.JFrame {
 
    
     @SuppressWarnings("unchecked")
-    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -189,7 +188,8 @@ public class Loja extends javax.swing.JFrame {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
+    
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
        
@@ -218,7 +218,8 @@ public class Loja extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        new EstoqueLivro(this.estoqueGeral.getListaLivros()).setVisible(true);
+        new EstoqueLivro(this.estoqueGeral).setVisible(true);
+        //new EstoqueLivro(this.estoqueGeral.getListaLivros()).setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -272,7 +273,7 @@ public class Loja extends javax.swing.JFrame {
             }
         });
     }
-
+    // Variables declaration - do not modify                     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -292,5 +293,7 @@ public class Loja extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
+// End of variables declaration
+//GEN-END:variables
 }

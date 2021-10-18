@@ -374,11 +374,17 @@ public class PesquisarCliente extends javax.swing.JFrame {
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
-       DefaultTableModel dtm = (DefaultTableModel)tabelaClientes.getModel();
+        DefaultTableModel dtm = (DefaultTableModel)tabelaClientes.getModel();
         int id = tabelaClientes.getSelectedRow();
-        String nomeCompleto = tabelaClientes.getValueAt(id, 0).toString();
-        dtm.removeRow(id);
-        estoqueGeral.eliminarCliente(nomeCompleto);
+        if(id != -1)
+        {
+            String nomeCompleto = tabelaClientes.getValueAt(id, 0).toString();
+            dtm.removeRow(id);
+            estoqueGeral.eliminarCliente(nomeCompleto);
+        }else
+        {
+             JOptionPane.showMessageDialog(null, "Selecione um cliente");
+        }
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed

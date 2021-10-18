@@ -48,7 +48,20 @@ public class Livro extends Produto {
 	public void setGeneroLiterario(String generoLiterario) {
 		this.generoLiterario = generoLiterario;
 	}
-	
-	
-	
+        /**
+        *
+        * @author Rodolfo
+        * Edita as informacoes de um determinado livro
+        */
+        public void editarLivro(String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
+        {
+            this.setAutor(autor);
+            this.setGeneroLiterario(generoLiterario);
+            super.setTitulo(titulo); 
+            super.setDataDePublicacao(dataDePublicacao);
+            super.setPreco(preco);
+            super.setEditora(editora);
+            super.setEdicao(edicao);
+            this.setQuantidade(edicao);
+        }
 }
