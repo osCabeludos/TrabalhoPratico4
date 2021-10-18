@@ -37,7 +37,7 @@ public class EditarCliente extends javax.swing.JFrame {
         
         txtCEP.setText(endereco.getCep());
        
-        
+      
         
         txtCidade.setText(endereco.getCidade());
         txtLote.setValue(Integer.valueOf(endereco.getLote()));
@@ -47,15 +47,13 @@ public class EditarCliente extends javax.swing.JFrame {
         txtDistrito.setText(endereco.getDistrito());
         txtNome.setText(cliente.getNome());
         txtCelular.setText(String.valueOf(celular.getNumero()));
-        /*
-        txtDataNascimento.setText(rg.getDataNascimento());
-        txtSexo.setValue(rg.getSexo());
         
-        //"(" + String.valueOf(celular.getDDD()) + ") "+String.valueOf(celular.getNumero())
+        txtDataNascimento.setText(String.valueOf(rg.getDataNascimento()));
+        txtSexo.setValue(rg.getSexo().toString());
         txtRGID.setText(rg.getID());
         txtValidade.setText(rg.getDataValidade());
         
-        */
+      
     }
 
     /**
