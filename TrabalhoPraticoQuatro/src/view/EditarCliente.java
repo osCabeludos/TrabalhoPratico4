@@ -7,6 +7,7 @@ package view;
 
 import classes.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,16 +30,8 @@ public class EditarCliente extends javax.swing.JFrame {
         RG rg = cliente.getRG();
         Endereco endereco = cliente.getEndereco();
         Celular celular = cliente.getCelular();
-        
-        System.out.println(cliente);
-        System.out.println(rg);
-        System.out.println(celular);
-        System.out.println(endereco);
-        
-        txtCEP.setText(endereco.getCep());
        
-      
-        
+        txtCEP.setText(endereco.getCep());
         txtCidade.setText(endereco.getCidade());
         txtLote.setValue(Integer.valueOf(endereco.getLote()));
         txtNCasa.setValue(endereco.getNumeroCasa());
@@ -46,14 +39,12 @@ public class EditarCliente extends javax.swing.JFrame {
         txtQuadra.setValue(endereco.getQuadra());
         txtDistrito.setText(endereco.getDistrito());
         txtNome.setText(cliente.getNome());
-        txtCelular.setText(String.valueOf(celular.getNumero()));
-        
+        txtDDD.setText(String.valueOf(celular.getDDD()));
+        txtNumero.setText(String.valueOf(celular.getNumero()));
         txtDataNascimento.setText(String.valueOf(rg.getDataNascimento()));
-        txtSexo.setValue(rg.getSexo().toString());
+        txtSexo.setText(rg.getSexo());
         txtRGID.setText(rg.getID());
-        txtValidade.setText(rg.getDataValidade());
-        
-      
+        txtValidade.setText(rg.getDataValidade());  
     }
 
     /**
@@ -90,10 +81,11 @@ public class EditarCliente extends javax.swing.JFrame {
         buttonEdit = new javax.swing.JToggleButton();
         txtNome = new javax.swing.JTextField();
         txtDataNascimento = new javax.swing.JTextField();
-        txtSexo = new javax.swing.JSpinner();
-        txtCelular = new javax.swing.JTextField();
+        txtDDD = new javax.swing.JTextField();
         txtRGID = new javax.swing.JTextField();
         txtValidade = new javax.swing.JTextField();
+        txtSexo = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Cliente");
@@ -208,7 +200,7 @@ public class EditarCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        buttonEdit.setText("Editar");
+        buttonEdit.setText("Salvar");
         buttonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditActionPerformed(evt);
@@ -220,8 +212,6 @@ public class EditarCliente extends javax.swing.JFrame {
                 txtDataNascimentoActionPerformed(evt);
             }
         });
-
-        txtSexo.setModel(new javax.swing.SpinnerListModel(new String[] {"Masculino", "Feminino"}));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -241,18 +231,21 @@ public class EditarCliente extends javax.swing.JFrame {
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCelular)
                             .addComponent(txtNome)
                             .addComponent(txtDataNascimento)
                             .addComponent(txtRGID)
+                            .addComponent(txtValidade)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtValidade))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumero)))
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonEdit))))
+                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +264,8 @@ public class EditarCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -312,6 +306,31 @@ public class EditarCliente extends javax.swing.JFrame {
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
+        Cliente cliente = estoqueGeral.pesquisarCliente(nomeCliente);
+        
+        Endereco endereco = new Endereco(
+                txtCEP.getText(),"",
+                txtDistrito.getText(),
+                txtCidade.getText(),
+                txtEstado.getText(),
+                String.valueOf(txtLote.getValue()),
+                (int)txtNCasa.getValue(),
+                (int)txtQuadra.getValue());
+        
+        RG rg = new RG(
+                txtSexo.getText(),
+                txtDataNascimento.getText(),
+                txtValidade.getText(),
+                txtRGID.getText());
+        Celular celular = new Celular(
+                (int)Integer.valueOf(txtDDD.getText()),
+                (int)Integer.valueOf(txtNumero.getText())
+        );
+        
+        cliente.editarCliente(txtNome.getText(), rg, endereco, celular);
+        JOptionPane.showMessageDialog(this,"Alteracoes feitas com sucesso");
+        this.setVisible(false);
+        
     }//GEN-LAST:event_buttonEditActionPerformed
 
     /**
@@ -368,17 +387,18 @@ public class EditarCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCEP;
-    private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCidade;
+    private javax.swing.JTextField txtDDD;
     private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtDistrito;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JSpinner txtLote;
     private javax.swing.JSpinner txtNCasa;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNumero;
     private javax.swing.JSpinner txtQuadra;
     private javax.swing.JTextField txtRGID;
-    private javax.swing.JSpinner txtSexo;
+    private javax.swing.JTextField txtSexo;
     private javax.swing.JTextField txtValidade;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@ package classes;
 /**
  * @author Rodolfo
  * @author Marcos
- * Define os métodos e parâmetros de Cliente.
+ * Define os metodos e parï¿½metros de Cliente.
  */
 public class Cliente 
 {
@@ -56,7 +56,7 @@ public class Cliente
 	}
 	/**
 	 * @author Rodolfo
-	 * adiciona o numero passado como parâmetro á quantidade de revistas comprados pelo cliente.
+	 * adiciona o numero passado como parametro e quantidade de revistas comprados pelo cliente.
 	 */
 	public void setLivrosComprados(int quantidadeLivrosComprados) // Adiciona um livro comprado Ã¢ coleÃ§ao
 	{
@@ -78,4 +78,11 @@ public class Cliente
 	{
             this.revistasCompradas += quantidadeRevistasCompradas;
 	}
+        public void editarCliente(String nome, RG rg,Endereco endereco, Celular celular)
+        {
+            this.setCelular(celular);
+            this.setEndereco(endereco);
+            this.setNome(nome);
+            this.setRG(rg);
+        }
 }

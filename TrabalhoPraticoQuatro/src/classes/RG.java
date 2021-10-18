@@ -7,7 +7,7 @@ package classes;
 /**
  * @author Rodolfo
  * @author Marcos
- * Define os métodos e parâmetros para o RG dos Clientes.
+ * Define os metodos e parametros para o RG dos Clientes.
  */
 public class RG
 {
@@ -56,7 +56,7 @@ public class RG
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * edita um RG de acordo com os parâmetros passados
+	 * edita um RG de acordo com os parï¿½metros passados
 	 */
 	public void editarRG( String nome,String sexo,String dataNascimento,String dataValidade,String ID)
 	{

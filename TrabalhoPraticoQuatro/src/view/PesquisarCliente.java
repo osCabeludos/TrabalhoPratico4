@@ -220,16 +220,15 @@ public class PesquisarCliente extends javax.swing.JFrame {
                             .addComponent(txtCidade)
                             .addComponent(jLabel22))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtLote))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLote)
+                            .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtNCasa)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtDistrito)
-                                    .addComponent(jLabel26)))
+                                .addComponent(txtDistrito)
+                                .addComponent(jLabel26))
+                            .addComponent(txtNCasa)
                             .addComponent(jLabel12))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -311,9 +310,9 @@ public class PesquisarCliente extends javax.swing.JFrame {
                             .addComponent(txtValidade)
                             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtSexo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSexo)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCelular)
@@ -365,11 +364,12 @@ public class PesquisarCliente extends javax.swing.JFrame {
         txtLote.setText(endereco.getLote());       
         txtNCasa.setText(String.valueOf(endereco.getNumeroCasa()));      
         txtCelular.setText("(" + String.valueOf(celular.getDDD()) + ") "+String.valueOf(celular.getNumero()));   
-        /*
-         txtDataNascimento.setText(rg.getDataNascimento());       
+       
+        txtDataNascimento.setText(rg.getDataNascimento());       
         txtSexo.setText(rg.getSexo());      
-        txtRG.setText(rg.getID()); 
-        */
+        txtRG.setText(rg.getID());
+        txtValidade.setText(rg.getDataValidade());
+       
     }//GEN-LAST:event_tabelaClientesMouseClicked
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed

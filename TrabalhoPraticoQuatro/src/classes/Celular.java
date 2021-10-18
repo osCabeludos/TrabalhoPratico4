@@ -10,13 +10,11 @@ public class Celular
 {
 	private int ddd;
 	private int numero;
-	private Celular celular;
 	
 	public Celular(int ddd,int numero) 
 	{
 		this.ddd = ddd;
 		this.numero = numero;
-		this.celular = null;
 	}
 	public void setDDD(int ddd) 
 	{
@@ -33,10 +31,6 @@ public class Celular
 	public int getNumero() 
 	{
 		return this.numero;
-	}
-	public void registrarCelular()
-	{
-		this.celular = new Celular(this.getDDD(),this.getNumero());
 	}
 	public void editarCelular(int ddd, int numero)
 	{
