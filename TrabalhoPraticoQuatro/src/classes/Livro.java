@@ -1,10 +1,18 @@
+/**
+ * A definição de livro
+ * <p>
+ * Define os métodos da classe livro
+ * @author Rodolfo
+ */
 
 package classes;
 import java.util.Date;
-public class Livro extends Produto {
+public class Livro extends Produto 
+{
 	private String autor;
 	private String generoLiterario;
-        private int quantidade;
+	private int quantidade;
+	
 	public Livro(String autor, String generoLiterario, String titulo, String dataDePublicacao, 
 			float preco, String editora, int edicao,int quantidade ) {
 		this.autor = autor;
@@ -14,16 +22,16 @@ public class Livro extends Produto {
 		super.preco = preco;
 		super.editora = editora;
 		super.edicao = edicao;
-                this.quantidade = quantidade;
+		this.quantidade = quantidade;
 	}
 	public void setQuantidade(int q)
-        {
-            this.quantidade -= q;
-        }
-        public int getQuantidade()
-        {
-            return this.quantidade;
-        }
+	{
+		this.quantidade -= q;
+	}
+	public int getQuantidade()
+	{
+		return this.quantidade;
+	}
 	public String getAtributoComparacao() {
 		return getTitulo();
 	}
@@ -48,20 +56,21 @@ public class Livro extends Produto {
 	public void setGeneroLiterario(String generoLiterario) {
 		this.generoLiterario = generoLiterario;
 	}
-        /**
-        *
-        * @author Rodolfo
-        * Edita as informacoes de um determinado livro
-        */
-        public void atualizarLivro(String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
-        {
-            this.setAutor(autor);
-            this.setGeneroLiterario(generoLiterario);
-            super.setTitulo(titulo); 
-            super.setDataDePublicacao(dataDePublicacao);
-            super.setPreco(preco);
-            super.setEditora(editora);
-            super.setEdicao(edicao);
-            this.setQuantidade(edicao);
-        }
+	/**
+	 * Edita as informacoes de um determinado livro
+	 * @author Rodolfo
+	 * @param String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade
+	 * @return void
+	 */
+	public void atualizarLivro(String autor, String generoLiterario, String titulo, String dataDePublicacao, float preco, String editora, int edicao,int quantidade)
+	{
+		this.setAutor(autor);
+		this.setGeneroLiterario(generoLiterario);
+		super.setTitulo(titulo); 
+		super.setDataDePublicacao(dataDePublicacao);
+		super.setPreco(preco);
+		super.setEditora(editora);
+		super.setEdicao(edicao);
+		this.setQuantidade(edicao);
+	}
 }

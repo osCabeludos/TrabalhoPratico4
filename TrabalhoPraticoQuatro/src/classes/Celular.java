@@ -1,16 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * A definição de celular
+ * <p>
+ * Define os métodos do celular de um determinado cliente
+ * @author Rodolfo
+ * 
  */
 package classes;
-
 
 public class Celular
 {
 	private int ddd;
 	private int numero;
-	
+
 	public Celular(int ddd,int numero) 
 	{
 		this.ddd = ddd;
@@ -37,5 +38,5 @@ public class Celular
 		this.setDDD(ddd);
 		this.setNumero(numero);
 	}
-	
+
 }

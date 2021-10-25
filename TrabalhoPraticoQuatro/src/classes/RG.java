@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * A definição de RG
+ * <p>
+ * Define os métodos da classe RG
+ * @author Rodolfo
  */
 package classes;
-/**
- * @author Rodolfo
- * @author Marcos
- * Define os metodos e parametros para o RG dos Clientes.
- */
 public class RG
 {
 	private String sexo,dataNascimento,dataValidade,ID;
@@ -54,9 +50,11 @@ public class RG
 		return this.ID;
 	}
 	/**
+	 * 
+	 * Edita um RG de acordo com os parametros passados
+	 * @param  String nome,String sexo,String dataNascimento,String dataValidade,String ID
 	 * @author Rodolfo
-	 * @author Marcos
-	 * edita um RG de acordo com os parï¿½metros passados
+	 * @return void
 	 */
 	public void editarRG( String nome,String sexo,String dataNascimento,String dataValidade,String ID)
 	{
@@ -65,9 +63,4 @@ public class RG
 		this.setDataValidade(dataValidade);
 		this.setID(ID);
 	}
-	public void mostrarRG() 
-	{
-		System.out.println(this.getDataNascimento() + " " + this.getDataValidade() + " " + this.getID() + " " +this.getSexo() + " ");
-	}
-	
 }

@@ -1,17 +1,21 @@
-package classes;
-import java.util.ArrayList;
 /**
+ * A definição de estoque geral
+ * <p>
+ * Define os métodos do estoque de tudo quanto existe na loja
  * @author Rodolfo
  * @author Marcos
- * Define os mï¿½todos e parï¿½metros da classe de Estoque Geral.
  */
+
+package classes;
+import java.util.ArrayList;
+
 public class EstoqueGeral
 {
 	private int estoqueLivros, estoqueRevistas;
 	private ArrayList<Livro> listaLivros;
 	private ArrayList<Revista> listaRevistas;
 	private ArrayList<Cliente> listaClientes;
-	
+
 	public EstoqueGeral(ArrayList<Livro> livro, ArrayList<Revista> revista,ArrayList<Cliente> listaClientes)
 	{
 		this.estoqueLivros = livro.size();
@@ -60,53 +64,66 @@ public class EstoqueGeral
 	public void setRevista(ArrayList<Revista> revista) {
 		this.listaRevistas = revista;
 	}
+
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna o objeto da classe Cliente , tendo o nome passado como parï¿½metro, e nulo caso nï¿½o seja encontrado
+	 * @param  nome do cliente
+	 * @return Retorna o objeto da classe Cliente, e nulo caso não seja encontrado
 	 */
 	public Cliente pesquisarCliente(String nomeCompleto) 
 	{
-		 for(int a = 0; a < this.listaClientes.size();a++) 
-	        {
-	            if(this.listaClientes.get(a).getNome().equalsIgnoreCase(nomeCompleto))
-	            {
-	                return this.listaClientes.get(a);
-	            }
-	        }
-		 return null;
+		for(int a = 0; a < this.listaClientes.size();a++) 
+		{
+			if(this.listaClientes.get(a).getNome().equalsIgnoreCase(nomeCompleto))
+			{
+				return this.listaClientes.get(a);
+			}
+		}
+		return null;
 	}
-        /**
+
+	/**
+	 * Elimina um determinado cliente da lista de clientes
+	 * <p>
 	 * @author Rodolfo
-	 * Elimina um cliente da lista de clientes
+	 * @param  nome do cliente
+	 * @return void
 	 */
-        public void eliminarCliente(String nomeCompleto) 
+	public void eliminarCliente(String nomeCompleto) 
 	{
-            Cliente cliente = this.pesquisarCliente(nomeCompleto);
-            this.getListaClientes().remove(cliente);
+		Cliente cliente = this.pesquisarCliente(nomeCompleto);
+		this.getListaClientes().remove(cliente);
 	}
-        /**
+	/**
+	 * Elimina um determinado livro da lista de livros
+	 * <p>
 	 * @author Rodolfo
-	 * Elimina um livro da lista de livros
+	 * @param  titulo do livro
+	 * @return void
 	 */
-        public void eliminarLivro(String titulo) 
+	public void eliminarLivro(String titulo) 
 	{
-            Livro livro = this.pesquisarLivroPorTitulo(titulo);
-            this.getListaLivros().remove(livro);
+		Livro livro = this.pesquisarLivroPorTitulo(titulo);
+		this.getListaLivros().remove(livro);
 	}
-        /**
+	/**
+	 * Elimina uma determinada revista da lista de revistas
+	 * <p>
 	 * @author Rodolfo
-	 * Elimina uma revista da lista das revistas
+	 * @param  titulo da revista
+	 * @return void
 	 */
-        public void eliminarRevista(String nome) 
+	public void eliminarRevista(String nome) 
 	{
-            Revista revista = this.pesquisarRevistaPorNome(nome);
-            this.getListaRevistas().remove(revista);
+		Revista revista = this.pesquisarRevistaPorNome(nome);
+		this.getListaRevistas().remove(revista);
 	}
 	/**
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna o objeto livro com o tï¿½tulo passado como parï¿½metro,e nulo caso nï¿½o seja encontrado
+	 * @param  titulo do livro
+	 * @return Retorna o objeto da classe Livro, e nulo caso não seja encontrado
 	 */
 	public Livro pesquisarLivroPorTitulo(String nome)
 	{
@@ -121,9 +138,11 @@ public class EstoqueGeral
 		return null;
 	}
 	/**
+	 * Este é um filtro de pesquisa de livro
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Mï¿½todo que funciona como filtro de pesquisa, retornando uma coleï¿½ï¿½o de livros com o mesmo autor.
+	 * @param  autor do livro
+	 * @return Retorna o objeto da classe Livro, e nulo caso não seja encontrado
 	 */
 	public Livro pesquisarLivroPorAutor(String autor)
 	{
@@ -139,9 +158,11 @@ public class EstoqueGeral
 		return null;
 	}
 	/**
+	 * Este é um filtro de pesquisa de revista
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Mï¿½todo que funciona como filtro de pesquisa, retornando uma coleï¿½ï¿½o de revista com a mesma editora.
+	 * @param  editora da revista
+	 * @return Retorna o objeto da classe Revista, e nulo caso não seja encontrado
 	 */
 	public Revista pesquisarRevistaPorEditora(String editora)
 	{
@@ -157,9 +178,11 @@ public class EstoqueGeral
 		return null;
 	}
 	/**
+	 * Este é um filtro de pesquisa de revista
 	 * @author Rodolfo
 	 * @author Marcos
-	 * Retorna a revista com o tï¿½tulo passado como parï¿½metro,e nulo caso nï¿½o seja encontrado
+	 * @param  nome da revista
+	 * @return Retorna o objeto da classe Revista, e nulo caso não seja encontrado
 	 */
 	public Revista pesquisarRevistaPorNome(String nome)
 	{
@@ -173,24 +196,30 @@ public class EstoqueGeral
 		return null;
 	}
 	/**
+	 * Cadastramento de um cliente
 	 * @author Rodolfo
-	 * Mï¿½todo que cadastra um cliente novo
+	 * @param  Cliente novoCliente
+	 * @return void
 	 */
 	public void cadastrarCliente(Cliente novoCliente) 
 	{
 		this.getListaClientes().add(novoCliente);
 	}
 	/**
+	 * Cadastramento de um livro
 	 * @author Rodolfo
-	 * Mï¿½todo que cadastra um livro novo
+	 * @param  Livro novoLivro 
+	 * @return void
 	 */
 	public void cadastrarLivro(Livro novoLivro) 
 	{
 		this.getListaLivros().add(novoLivro);
 	}
 	/**
+	 * Cadastramento de uma revista
 	 * @author Rodolfo
-	 * Mï¿½todo que cadastra uma revista nova
+	 * @param  Revista novaRevista 
+	 * @return void
 	 */
 	public void cadastrarRevista(Revista novaRevista) 
 	{

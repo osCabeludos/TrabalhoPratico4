@@ -1,4 +1,10 @@
-
+/**
+ * A definição de endereço
+ * <p>
+ * Define os métodos do endereço de um determinado cliente
+ * @author Rodolfo
+ * 
+ */
 package classes;
 
 public class Endereco 
@@ -6,7 +12,7 @@ public class Endereco
 	private String cep,complemento,distrito,cidade,estado,lote;
 	public Endereco(String cep, String complemento, String distrito, String cidade, String estado, String lote,
 			int numeroCasa, int quadra) {
-		
+
 		this.cep = cep;
 		this.complemento = complemento;
 		this.distrito = distrito;
@@ -18,7 +24,7 @@ public class Endereco
 	}
 
 	private int numeroCasa,quadra;
-	
+
 	public String getCep() {
 		return cep;
 	}
@@ -74,7 +80,7 @@ public class Endereco
 	 */
 	public void editarEndereco(String cep, String complemento, String distrito, String cidade, String estado, String lote,
 			int numeroCasa, int quadra) {
-		
+
 		this.setCep(cep);
 		this.setComplemento(complemento);
 		this.setDistrito(distrito);
@@ -84,5 +90,5 @@ public class Endereco
 		this.setNumeroCasa(numeroCasa);
 		this.setQuadra(quadra);
 	}
-	
+
 }
